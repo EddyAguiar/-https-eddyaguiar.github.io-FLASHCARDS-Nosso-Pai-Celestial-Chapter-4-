@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>📖 Flashcards – O Dom do Arbítrio</title>
+  <style>
+    :root{
+      --simple:#4285F4; --compound:#EA4335; --complex:#34A853; --coordinating:#FBBC05; --practice:#7B1FA2;
+    }
+    *{box-sizing:border-box}
+    body{
+      font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;
+      background:#f5f7fa;margin:0;padding:24px;color:#2d3748;
+      max-width:1100px;margin-left:auto;margin-right:auto;
+    }
+    h1{text-align:center;margin:0 0 8px;font-size:1.6rem;border-bottom:2px solid #e2e8f0;padding-bottom:12px;}
+    .subtitle{text-align:center;color:#4a5568;margin:8px 0 20px;}
+    .categories{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:18px;}
+    .category-btn{padding:8px 16px;border-radius:20px;border:none;cursor:pointer;font-weight:600;transition:all .18s;}
+    .category-btn:hover{transform:translateY(-2px);box-shadow:0 4px 8px rgba(0,0,0,0.08);}
+    .simple-btn{background:var(--simple);color:#fff}
+    .compound-btn{background:var(--compound);color:#fff}
+    .complex-btn{background:var(--complex);color:#fff}
+    .coordinating-btn{background:var(--coordinating);color:#000}
+    .practice-btn{background:var(--practice);color:#fff}
+    .flashcards-container{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;}
+    .flashcard{background:#fff;border-radius:12px;padding:18px;box-shadow:0 6px 12px rgba(17,24,39,0.06);
+      border-left:6px solid #ddd;cursor:pointer;overflow:hidden;transition:transform .18s,box-shadow .18s;}
+    .flashcard:hover{transform:translateY(-6px);box-shadow:0 14px 30px rgba(17,24,39,0.08);}
+    .simple{border-color:var(--simple);}
+    .compound{border-color:var(--compound);}
+    .complex{border-color:var(--complex);}
+    .coordinating{border-color:var(--coordinating);}
+    .practice{border-color:var(--practice);}
+    .flashcard-header{font-weight:700;display:flex;align-items:center;gap:10px;font-size:1.05rem;margin-bottom:10px;}
+    .emoji{font-size:1.4rem;}
+    .content{display:none;}
+    .content.active{display:block;animation:fadeIn .28s ease;}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+    .question{background:#f8fafc;padding:10px;border-radius:8px;margin-bottom:10px;font-weight:600;color:#334155;}
+    .answer{background:#ebf8ff;padding:10px;border-radius:8px;margin:8px 0;border-left:4px solid #4299e1;color:#1f2937;}
+    .explanation{background:#f0fff4;padding:10px;border-radius:8px;margin:8px 0;border-left:4px solid #48bb78;color:#1f2937;}
+    .examples{background:#fff5f5;padding:10px;border-radius:8px;margin:8px 0;border-left:4px solid #f56565;color:#1f2937;}
+    .practice-block{background:#f3e5f5;padding:10px;border-radius:8px;margin:8px 0;border-left:4px solid var(--practice);}
+    .practice-item{margin-bottom:10px;}
+    .practice-question{font-weight:700;color:#5b21b6;margin-bottom:8px;}
+    .practice-answer{display:none;background:#edf7ff;padding:8px;border-radius:6px;margin-top:8px;}
+    .practice-answer.active{display:block;}
+    .show-answer{background:var(--practice);color:#fff;border:none;padding:7px 10px;border-radius:6px;cursor:pointer;}
+    footer{text-align:center;margin-top:26px;color:#555;font-size:0.9rem;border-top:1px solid #e6eef6;padding-top:12px;}
+  </style>
+</head>
+<body>
+
+<h1>📖 Flashcards – O Dom do Arbítrio</h1>
+<div class="subtitle">Estudo sobre o princípio eterno do arbítrio e sua importância no plano de salvação.</div>
+
+<div class="categories">
+  <button class="category-btn simple-btn" onclick="filterCards('simple')">O Arbítrio</button>
+  <button class="category-btn compound-btn" onclick="filterCards('compound')">No Plano de Salvação</button>
+  <button class="category-btn complex-btn" onclick="filterCards('complex')">Escolha e Oposição</button>
+  <button class="category-btn coordinating-btn" onclick="filterCards('coordinating')">Escrituras</button>
+  <button class="category-btn practice-btn" onclick="filterCards('practice')">Reflexão / Prática</button>
+  <button class="category-btn" onclick="filterCards('all')" style="background:#2d3748;color:#fff">Mostrar Todos</button>
+</div>
+
+<div class="flashcards-container">
+
+  <!-- O Arbítrio é um Princípio Eterno -->
+  <div class="flashcard simple">
+    <div class="flashcard-header"><span class="emoji">🔵</span> O Arbítrio é um Princípio Eterno</div>
+    <div class="content">
+      <div class="question">Por que é importante termos o arbítrio?</div>
+      <div class="answer">O arbítrio é o poder de escolher entre o bem e o mal. É essencial para nosso progresso e felicidade.</div>
+      <div class="explanation">Deus nos deu liberdade para agir por nós mesmos (Moisés 3:17). Podemos escolher a vida eterna seguindo Cristo ou a morte espiritual seguindo Satanás (2 Néfi 2:27).</div>
+      <div class="examples"><strong>Aplicação:</strong> Escolher o bem traz alegria verdadeira e crescimento espiritual.</div>
+    </div>
+  </div>
+
+  <!-- O Arbítrio no Plano de Salvação -->
+  <div class="flashcard compound">
+    <div class="flashcard-header"><span class="emoji">🔴</span> O Arbítrio no Plano de Salvação</div>
+    <div class="content">
+      <div class="question">Por que o arbítrio é necessário no plano de Deus?</div>
+      <div class="answer">Sem arbítrio, não poderíamos ser provados nem mostrar se faríamos tudo o que o Senhor ordena (Abraão 3:25).</div>
+      <div class="explanation">As escolhas corretas fortalecem nosso poder de escolher bem novamente. À medida que obedecemos, crescemos em sabedoria e fé (Helamã 14:30–31; D&C 93:28).</div>
+      <div class="examples"><strong>Exemplo:</strong> Cada mandamento guardado torna mais fácil obedecer o próximo.</div>
+    </div>
+  </div>
+
+  <!-- O Arbítrio Requer Escolha e Oposição -->
+  <div class="flashcard complex">
+    <div class="flashcard-header"><span class="emoji">🟢</span> O Arbítrio Requer Escolha e Oposição</div>
+    <div class="content">
+      <div class="question">Por que é necessária a oposição?</div>
+      <div class="answer">Não há retidão sem o contraste entre bem e mal. “É necessário que haja oposição em todas as coisas” (2 Néfi 2:11).</div>
+      <div class="explanation">Satanás tenta destruir o plano de Deus, oferecendo pecado e escravidão espiritual (Moisés 4:3–4). Ele busca tornar todos miseráveis como ele (2 Néfi 2:18, 27).</div>
+      <div class="examples"><strong>Analogia:</strong> Como uma placa de “Perigo—redemoinho”, os mandamentos nos afastam do perigo e preservam nossa liberdade.</div>
+    </div>
+  </div>
+
+  <!-- Escrituras Adicionais -->
+  <div class="flashcard coordinating">
+    <div class="flashcard-header"><span class="emoji">🟡</span> Escrituras Adicionais</div>
+    <div class="content">
+      <div class="question">Versículos que ensinam sobre o arbítrio e suas consequências</div>
+      <div class="explanation">
+        <p><strong>Moisés 7:32</strong> — Deus concedeu a liberdade de escolha a todos os Seus filhos.</p>
+        <p><strong>Abraão 3:24–25</strong> — A vida mortal é um teste para ver se obedeceremos a Deus.</p>
+        <p><strong>Alma 41:3; Morôni 7:5–6</strong> — Cada pessoa será julgada segundo suas obras e intenções.</p>
+        <p><strong>2 Néfi 2:11–16</strong> — Ensina que a oposição é necessária para a existência do bem e do mal.</p>
+        <p><strong>Morôni 7:12–17</strong> — Mostra como discernir entre o que vem de Deus e o que vem do mal.</p>
+        <p><strong>2 Pedro 2:19; João 8:34</strong> — O pecado escraviza; a verdadeira liberdade vem pela obediência.</p>
+        <p><strong>2 Néfi 2:28–29; Alma 40:12–13</strong> — As escolhas determinam nossa recompensa: liberdade e vida ou cativeiro e morte.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Perguntas para Reflexão / Prática -->
+  <div class="flashcard practice">
+    <div class="flashcard-header"><span class="emoji">🟣</span> Perguntas para Reflexão / Prática</div>
+    <div class="content">
+      <div class="question">Use em estudo pessoal ou familiar</div>
+      <div class="practice-block">
+        <div class="practice-item">
+          <div class="practice-question">1. Como você usa seu arbítrio para se aproximar de Cristo?</div>
+          <button class="show-answer">Mostrar sugestão</button>
+          <div class="practice-answer">Sugestão: “Escolho orar, estudar as escrituras e servir ao próximo.”</div>
+        </div>
+        <div class="practice-item">
+          <div class="practice-question">2. Que tipos de escolhas limitam sua liberdade?</div>
+          <button class="show-answer">Mostrar sugestão</button>
+          <div class="practice-answer">Sugestão: “Ceder a tentações ou hábitos que enfraquecem o Espírito.”</div>
+        </div>
+        <div class="practice-item">
+          <div class="practice-question">3. O que você pode fazer hoje para fortalecer seu poder de escolher o bem?</div>
+          <button class="show-answer">Mostrar sugestão</button>
+          <div class="practice-answer">Sugestão: “Obedecer a um mandamento específico com mais diligência.”</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>Material criado para estudo — Edson D'Aguiar • © @InglêsFácilGratuito</footer>
+
+<script>
+  document.querySelectorAll('.flashcard').forEach(card=>{
+    card.addEventListener('click',e=>{
+      if(e.target.classList.contains('show-answer'))return;
+      card.querySelector('.content').classList.toggle('active');
+    });
+  });
+  document.querySelectorAll('.show-answer').forEach(btn=>{
+    btn.addEventListener('click',e=>{
+      e.stopPropagation();
+      btn.nextElementSibling.classList.toggle('active');
+    });
+  });
+  function filterCards(category){
+    document.querySelectorAll('.flashcard').forEach(card=>{
+      card.style.display=(category==='all'||card.classList.contains(category))?'':'none';
+    });
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+</script>
+</body>
+</html>
